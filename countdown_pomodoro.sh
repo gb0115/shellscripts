@@ -45,6 +45,3 @@ function start_timer(){
 }
 main 
 
-#改良点
-#今日のpomodoro数をtomatoで表示
-#scriptをdailyで動かすには？
