@@ -19,8 +19,8 @@ function start_timer(){
 	while [ 1 ];
 	do
     #25minute in seconds
-    let goal_time=$((25*60))
-    let rest_time=$((12*60))+$goal_time;
+    let goal_time=$((5))
+    let rest_time=$((5))+$goal_time;
 		let current_time="$(date +%s)"
 		let seconds=$current_time-$start_time;
     let remain=$goal_time-$seconds;
@@ -29,9 +29,10 @@ function start_timer(){
     printf "\r\U1F345%02d:%02d" "$((remain/60%60))" "$((remain%60))"
     sleep 1;
     elif [ $remain -eq 0 ]; then 
+    sleep 1;
     printf "\r\U1F345%02d:%02d" "$((0/60%60))" "$((0%60))"
-    echo -en "\007"
     pomodoro_count
+    echo -en "\007"
     elif [ $remain -lt 0 ]; then
     sleep 1;
     printf "\r\U1F4A4%02d:%02d" "$((rest_remain/60%60))" "$((rest_remain%60))"
