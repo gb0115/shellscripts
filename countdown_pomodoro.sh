@@ -26,19 +26,20 @@ function start_timer(){
     let remain=$goal_time-$seconds;
     let rest_remain=$rest_time-$seconds;
     if [ $remain -gt 0 ]; then
-    printf "\r\U1F345%02d:%02d" "$((remain/60%60))" "$((remain%60))"
-    sleep 1;
+      printf "\r\U1F345%02d:%02d" "$((remain/60%60))" "$((remain%60))"
+      sleep 1;
     elif [ $remain -eq 0 ]; then 
-    printf "\r\U1F345%02d:%02d" "$((0/60%60))" "$((0%60))"
-    echo -en "\007"
-    pomodoro_count
+      printf "\r\U1F345%02d:%02d" "$((0/60%60))" "$((0%60))"
+      pomodoro_count
+      tmux display-popup "nvim /home/infoh/pomodoro"      
+      echo -en "\007"
     elif [ $remain -lt 0 ]; then
-    sleep 1;
-    printf "\r\U1F4A4%02d:%02d" "$((rest_remain/60%60))" "$((rest_remain%60))"
-      if [ $rest_remain -eq 0 ]; then 
+      sleep 1;
+      printf "\r\U1F4A4%02d:%02d" "$((rest_remain/60%60))" "$((rest_remain%60))"
+    if [ $rest_remain -eq 0 ]; then 
       echo -en "\007"
       printf "\r%s\n" "FINISHED"
-    exit 0
+      exit 0
     fi
     fi
 	done

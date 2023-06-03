@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 echo "tell me TITLE"
 #reading input
-read TITLE
+read TITLE_
 w3mToMd()
 {
     if [ -z $1 ]
@@ -14,6 +14,7 @@ w3mToMd()
             echo "URL is ${URL}"
     fi
 	DATE=`date +%y%m%d`
+  TITLE=$(echo ${TITLE_} | sed 's/\s/_/g')
 	NAME=${TITLE}'_'${DATE}
 	w3m -dump ${URL} >> ${NAME}.md
     echo ${URL} >> ${NAME}.md

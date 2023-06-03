@@ -19,7 +19,7 @@ function start_timer(){
 	while [ 1 ];
 	do
     #25minute in seconds
-    let goal_time=$((5))
+    let goal_time=$((10))
     let rest_time=$((5))+$goal_time;
 		let current_time="$(date +%s)"
 		let seconds=$current_time-$start_time;
@@ -32,6 +32,7 @@ function start_timer(){
     sleep 1;
     printf "\r\U1F345%02d:%02d" "$((0/60%60))" "$((0%60))"
     pomodoro_count
+    tmux display-popup "nvim /home/infoh/pomodoro"
     echo -en "\007"
     elif [ $remain -lt 0 ]; then
     sleep 1;
