@@ -1,0 +1,8 @@
+#ignore env
+.env
+#ignore bak, old, tmp files
+*bak
+*old
+*tmp
+#ignore private
+?*private*
